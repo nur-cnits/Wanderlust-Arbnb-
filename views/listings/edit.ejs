@@ -1,0 +1,83 @@
+<%= layout("layouts/boilarplate") %>
+<body>
+  <h3>Edit your item</h3>
+
+  <div class="row">
+    <div class="col-8 offset-2">
+      <form method="post" action="/listings/<%=id %>?_method=PATCH">
+        <div>
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            name="listing[title]"
+            value="<%=list.title %>"
+          />
+        </div>
+        <br />
+        <div>
+          <label for="description" class="form-label">Description</label>
+          <textarea class="form-control" name="listing[description]">
+ <%=list.description %></textarea
+          >
+        </div>
+        <br />
+
+        <div>
+          <label for="image" class="form-label">Image</label>
+          <input
+            type="text"
+            class="form-control"
+            name="listing[image]"
+            value="<%=list.image %>"
+          />
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              name="listing[price]"
+              value="<%=list.price %>"
+            />
+          </div>
+
+          <div class="col-md-8">
+            <label for="country" class="form-label">Country</label>
+            <input
+              type="text"
+              name="listing[country]"
+              value="<%=list.country %>"
+              placeholder=""
+              class="form-control"
+            />
+          </div>
+        </div>
+        <br />
+        <div>
+          <label for="location" class="form-label">location</label>
+          <input
+            type="text"
+            name="listing[location]"
+            value="<%=list.location %>"
+            placeholder=""
+            class="form-control"
+          />
+        </div>
+
+        <br />
+
+        <button type="submit" class="btn btn-outline-danger">Change</button>
+        <br />
+        <br />
+      </form>
+      <br />
+      <br />
+      <br />
+      <br />
+    </div>
+  </div>
+</body>

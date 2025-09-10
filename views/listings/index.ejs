@@ -1,0 +1,30 @@
+<%= layout("/layouts/boilarplate") %>
+
+<body>
+  <h3>All List</h3>
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+    <% for(let list of allLists) { %>
+
+    <a class="listing-list" href="/listings/<%= list._id %> ">
+      <div class="card p-1">
+        <div style="height: 20rem; width: 100%">
+          <img
+            src="<%=list.image %>"
+            class="card-img-top"
+            alt="Listing-img"
+            style="height: 18rem; width: 100%"
+          />
+        </div>
+
+        <div class="card-img-overlay"><P></P></div>
+        <div class="card-body">
+          <h5 class="card-text"><%=list.title %></h5>
+          <h5>$<%= list.price %> /Night</h5>
+        </div>
+      </div>
+    </a>
+
+    <% } %>
+  </div>
+</body>

@@ -1,0 +1,36 @@
+<%= layout("layouts/boilarplate") %>
+
+<body>
+  <div class="card offset-2 p-3">
+    <h3 class="mt-2">See Details</h3>
+    <div style="height: 300px; width: 400px">
+      <img
+        src="<%=oneLists.image %>"
+        class="card-img-top"
+        alt="Listing-img"
+        style="height: 100%; width: 100%"
+      />
+    </div>
+
+    <div class="card-img-overlay"><P></P></div>
+    <div class="card-body">
+      <h5 class="card-text"><%=oneLists.title %></h5>
+      <p>description: <%= oneLists.description %></p>
+      <p>Country: <%= oneLists.country %></p>
+      <p>Location: <%= oneLists.location%></p>
+      <p>Price: <%= oneLists.price %></p>
+    </div>
+  </div>
+
+  <div class="edit_delete">
+    <form method="get" action="/listings/<%=oneLists._id %>/edit">
+      <button type="submit" class="btn btn-outline-primary">Edit</button>
+    </form>
+
+    <form method="post" action="/listings/<%=oneLists._id %>?_method=DELETE">
+      <button type="submit" class="btn btn-outline-danger">DELETE</button>
+    </form>
+  </div>
+
+  <br />
+</body>

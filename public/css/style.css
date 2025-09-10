@@ -1,0 +1,83 @@
+.navbar {
+  height: 5rem;
+  background-color: white;
+}
+
+.fa-compass {
+  color: #fe422d;
+  font-size: 2rem;
+}
+
+.nav-link {
+  color: black !important;
+}
+
+footer {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #ebebeb;
+  height: 8rem;
+}
+
+.info-links {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.info-links a {
+  text-decoration: none;
+  color: black;
+}
+
+.info-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-information i {
+  font-size: 1.2rem;
+  margin: 0.5rem;
+}
+
+.card {
+  border: none !important;
+  margin-bottom: 2rem;
+  text-decoration: none;
+}
+
+.card-img-top {
+  border-radius: 10px;
+}
+
+.listing-list {
+  text-decoration: none;
+}
+
+.card-img-overlay {
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.card-img-overlay:hover {
+  opacity: 0.2;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2),
+    /* soft outer shadow */ 0 8px 10px rgba(0, 0, 0, 0.1),
+    /* secondary subtle shadow */ inset 0 1px 2px rgba(151, 151, 151, 0.7);
+  transition: 0.2;
+}
+
+/* add form */
+
+.form-full {
+  margin-bottom: 167px;
+}
+
+/* edit and delate button */
+
+.edit_delete {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
