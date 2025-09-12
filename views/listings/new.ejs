@@ -4,7 +4,12 @@
 
   <div class="row form-full">
     <div class="col-8 offset-2">
-      <form method="post" action="/listings">
+      <form
+        method="post"
+        action="/listings"
+        novalidate
+        class="needs-validation"
+      >
         <!-- Nested object: listing -->
 
         <div class="mb-3">
@@ -16,6 +21,8 @@
             class="form-control"
             required
           />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please choose a title.</div>
         </div>
 
         <div class="mb-3">
@@ -24,7 +31,10 @@
             name="listing[description]"
             placeholder="Description"
             class="form-control"
+            required
           ></textarea>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please choose a Description.</div>
         </div>
 
         <div class="mb-3">
@@ -45,7 +55,10 @@
               name="listing[price]"
               placeholder="Enter price"
               class="form-control"
+              required
             />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please Enter a Price.</div>
           </div>
 
           <div class="mb-3 col-md-8">
@@ -55,7 +68,10 @@
               name="listing[country]"
               placeholder="Enter country"
               class="form-control"
+              required
             />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please choose a country.</div>
           </div>
         </div>
 
@@ -66,7 +82,10 @@
             name="listing[location]"
             placeholder="location"
             class="form-control"
+            required
           />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please say a location.</div>
         </div>
 
         <button type="submit" class="btn btn-outline-success">Add</button>

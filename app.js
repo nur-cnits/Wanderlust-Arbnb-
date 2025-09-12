@@ -6,8 +6,6 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 
-// _method query parameter use korbe
-
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
