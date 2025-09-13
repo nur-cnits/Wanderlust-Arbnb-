@@ -5,6 +5,8 @@ const Listing = require("../Project-1/models/listing.js");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+const warpAsync = require("./utils/warpAsync.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -31,18 +33,23 @@ async function main() {
   await mongoose.connect(mongo_Url);
 }
 
-app.get("/listings", async (req, res) => {
-  let allLists = await Listing.find({});
-  res.render("listings/index.ejs", { allLists });
+app.get("/", (req, res) => {
+  res.send("Hi , i am root");
 });
+
+app.get(
+  "/listings",
+  warpAsync(async (req, res, next) => {
+    let allLists = await Listing.find({});
+    res.render("listings/index.ejs", { allLists });
+  })
+);
 
 //create route-->>
 
 app.get("/listings/new", (req, res) => {
   res.render("listings/new.ejs");
 });
-
-//new route
 
 app.post("/listings", async (req, res) => {
   let listing = req.body.listing;
@@ -88,8 +95,13 @@ app.get("/listings/:id", async (req, res) => {
   res.render("listings/show.ejs", { oneLists });
 });
 
-app.get("/", (req, res) => {
-  res.send("working");
+app.all(/.*/, (req, res, next) => {
+  next(new ExpressError(404, "Page Not Found!"));
+});
+
+app.use((err, req, res, next) => {
+  let { statusCode = 500, message = "something is wrong" } = err;
+  res.render("error.ejs", { statusCode, message });
 });
 
 app.listen(8080, () => {
