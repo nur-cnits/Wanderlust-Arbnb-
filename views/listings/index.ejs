@@ -7,7 +7,7 @@
     <% for(let list of allLists) { %>
 
     <a class="listing-list" href="/listings/<%= list._id %> ">
-      <div class="card p-1">
+      <div class="card p-1" id="listing-card">
         <div style="height: 20rem; width: 100%">
           <img
             src="<%=list.image %>"

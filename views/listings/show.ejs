@@ -1,8 +1,8 @@
 <%= layout("layouts/boilerplate") %>
 
 <body>
-  <div class="card offset-2 p-3">
-    <h3 class="mt-2">See Details</h3>
+  <div class="card offset-2 p-3" id="listing-card">
+    <h3 class="mt-2"><%= oneLists.title %></h3>
     <div style="height: 300px; width: 400px">
       <img
         src="<%=oneLists.image %>"
@@ -14,7 +14,7 @@
 
     <div class="card-img-overlay"><P></P></div>
     <div class="card-body">
-      <h5 class="card-text"><%=oneLists.title %></h5>
+      <h5 class="card-text"></h5>
       <p>description: <%= oneLists.description %></p>
       <p>Country: <%= oneLists.country %></p>
       <p>Location: <%= oneLists.location%></p>
@@ -30,6 +30,64 @@
     <form method="post" action="/listings/<%=oneLists._id %>?_method=DELETE">
       <button type="submit" class="btn btn-outline-danger">DELETE</button>
     </form>
+  </div>
+
+  <div class="col-8 offset-2">
+    <hr />
+    <h4>Leave a review</h4>
+    <form
+      method="POST"
+      action="/listings/<%=oneLists._id%>/reviews"
+      novalidate
+      class="needs-validation"
+    >
+      <div>
+        <label for="ratting" class="form-label">Rating</label>
+        <input
+          type="range"
+          min="1"
+          max="5"
+          id="rating"
+          name="review[rating]"
+          class="form-range"
+        />
+      </div>
+      <div>
+        <label for="comments" class="form-label">Comment</label>
+        <textarea
+          name="review[comment]"
+          id="comment"
+          class="form-control"
+          required
+        ></textarea>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please Write a Comment</div>
+      </div>
+      <br />
+      <button type="submit" class="btn btn-outline-success">Submit</button>
+    </form>
+  </div>
+  <hr />
+
+  <div class="row gap-3 offset-2">
+    <p><b>All Reviews</b></p>
+    <% for( review of oneLists.reviews) { %>
+
+    <div class="card col-5">
+      <div class="card-body">
+        <h5 class="card-title">Nur-uddin</h5>
+        <p class="card-text"><%= review.comment %></p>
+        <p class="card-text"><%= review.rating %>Stars</p>
+      </div>
+      <form
+        method="POST"
+        action="/listings/<%=oneLists._id%>/reviews/<%=review._id%>?_method=DELETE"
+      >
+        <button class="btn btn-sm btn-dark mb-2">Delete</button>
+      </form>
+    </div>
+
+    <% } %>
   </div>
 
   <br />
