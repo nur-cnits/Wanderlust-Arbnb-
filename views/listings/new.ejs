@@ -9,6 +9,7 @@
         action="/listings"
         novalidate
         class="needs-validation"
+        enctype="multipart/form-data"
       >
         <!-- Nested object: listing -->
 
@@ -40,10 +41,11 @@
         <div class="mb-3">
           <label for="image" class="form-label">Image</label>
           <input
-            type="text"
+            type="file"
             name="listing[image]"
-            placeholder="Give image link"
+            placeholder="Upload image"
             class="form-control"
+            required
           />
         </div>
 
@@ -51,7 +53,7 @@
           <div class="mb-3 col-md-4">
             <label for="price" class="form-label">Price</label>
             <input
-              type="text"
+              type="number"
               name="listing[price]"
               placeholder="Enter price"
               class="form-control"
